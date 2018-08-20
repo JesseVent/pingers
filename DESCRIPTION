@@ -1,22 +1,13 @@
 Package: pingers
 Type: Package
-<<<<<<< HEAD
 Title: Identify, Ping, and Log Internet Provider Connection Data
 Note: Currently only unix based systems are supported.
-Description: To assist you with troubleshooting internet connection 
-    issues and assist in isolating packet loss on your network. It does this by allowing you to 
+Description: To assist you with troubleshooting internet connection issues and
+    assist in isolating packet loss on your network. It does this by allowing you to 
     retrieve the top trace route destinations your internet provider uses, and recursively 
-    ping each server a series of time capturing the results. Each iteration it 
-=======
-Title: Identify, Ping, and Log ISP Connection Data
-Note: Currently only unix based systems are supported.
-Description: The goal of pingers is to assist you with troubleshooting ISP connection 
-    issues and assist isolating packet loss. It does this by allowing you to 
-    retrieve the top traceroute destinations your ISP uses, and recursively 
-    ping each server a seres of time capturing the results. Each iteration it 
->>>>>>> 91614a8d37c8be49b1f607617e35e53857d2a358
-    goes and queries the destinations again, before shuffling the sequence to 
-    ensure the analysis is unbiased and consistent across each trace route.
+    ping each server in series while capturing the results and writing them to a log file. 
+    Each iteration it queries the destinations again, before shuffling the sequence of 
+    destinations to ensure the analysis is unbiased and consistent across each trace route.
 Version: 0.1.0
 Authors@R: c(person("Jesse", "Vent",
                     role = c("aut", "cre"), 

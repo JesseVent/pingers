@@ -21,11 +21,7 @@
 #' }
 get_destinations <- function(keyword = NULL, top_n = NULL) {
   sys_os <- .Platform$OS.type
-<<<<<<< HEAD
   if (sys_os == "unix") {
-=======
-  if(sys_os == "unix") {
->>>>>>> 91614a8d37c8be49b1f607617e35e53857d2a358
   if (is.null(top_n)) {
     trace <- system("traceroute google.com", intern = TRUE) %>%
       tidyselect::vars_select(tidyselect::contains(keyword)) %>%
