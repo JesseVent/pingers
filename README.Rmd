@@ -20,10 +20,16 @@ The goal of pingers is to assist you with troubleshooting ISP connection issues 
 
 ## Usage
 
-This is a basic example which shows you how to solve a common problem:
+The below showcases the main functions of the `pingers` package. 
 
-```{r example, eval=FALSE, include=FALSE}
-## basic example codelibrary(dplyr)
+These functions will:
+- Retrieve hops between ISP destinations on your network
+- Ping a destination repeatedly and calculate packet loss
+- Repeat pinging the destinations to isolate and locate troublesome destinations 
+- Shuffle the destinations in each iteration as to not be only testing for one path
+
+```{r example, eval=F, echo=T}
+# Install pingers from GitHub
 devtools::install_github("jessevent/pinger")
 library(pinger)
 
@@ -42,3 +48,14 @@ log_path     <- "~/Desktop/netlogs/network_logs.csv"
 ```
 
 > Use `Ctrl + C` to stop capturing logs, or the **Stop** button in RStudio.
+
+## Output
+
+The **network_log.csv** file will contain the following:
+
+timestamp               | server     | packets_sent | packets_back | packet_loss | packets_lost | ping_min | ping_avg | ping_max | ping_stddev | call_sequence
+------------------------|------------|--------------|--------------|-------------|--------------|----------|----------|----------|-------------|--------------
+2018-07-22T15:29:31.34Z | 10.0.0.000 | 10           | 10           | 0           | 0            | 2.093    | 3.534    | 8.826    | 1.965       | 1
+2018-07-22T15:29:40.48Z | 10.0.0.001 | 10           | 10           | 0           | 0            | 2.697    | 3.948    | 8.649    | 1.667       | 2
+2018-07-22T15:29:49.50Z | 10.0.0.002 | 10           | 9            | 10          | 11.1         | 3.366    | 5.083    | 8.163    | 1.381       | 3
+2018-07-22T15:29:58.53Z | 10.0.0.003 |              |              |             |              |          |          |          |             | 7
