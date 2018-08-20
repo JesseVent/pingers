@@ -1,0 +1,13 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^README\.Rmd$
+^README-.*\.png$
+^.*\.RData$
+^.*\.Rhistory$
+^.*\.tar.gz$
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+ISSUE_TEMPLATE.md
+cran-comments.md
+/inst/
+^cran-comments\.md$

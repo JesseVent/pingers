@@ -1,0 +1,26 @@
+Package: pingers
+Type: Package
+Title: Identify, Ping, and Log ISP Connection Data
+Description: The goal of pingers is to assist you with troubleshooting ISP connection 
+    issues and assist isolating packet loss. It does this by allowing you to 
+    retrieve the top traceroute destinations your ISP uses, and recursively 
+    ping each server a seres of time capturing the results. Each iteration it 
+    goes and queries the destinations again, before shuffling the sequence to 
+    ensure the analysis is unbiased and consistent across each trace route.
+Version: 0.1.0
+Authors@R: c(person("Jesse", "Vent",
+                    role = c("aut", "cre"), 
+                    email = "cryptopackage@icloud.com"))
+Maintainer: Jesse Vent <cryptopackage@icloud.com>
+URL: https://github.com/JesseVent/pinger
+BugReports: https://github.com/JesseVent/pinger/issues
+Depends: R (>= 3.4.0)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: dplyr, stringr, tibble, tictoc, tidyselect, data.table
+RoxygenNote: 6.1.0
+NeedsCompilation: no
+Packaged: 2018-08-20 15:37:41 UTC; jesseimac
+Author: Jesse Vent [aut, cre]
+Built: R 3.5.1; ; 2018-08-20 15:38:27 UTC; unix

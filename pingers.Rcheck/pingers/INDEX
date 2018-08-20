@@ -1,0 +1,4 @@
+capture_logs            Capture ISP network logs
+get_destinations        Get ISP destinations
+ping_capture            Ping Server
+shuffle                 Shuffle dataframe rows randomely

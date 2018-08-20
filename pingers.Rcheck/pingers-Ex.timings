@@ -1,0 +1,5 @@
+name	user	system	elapsed
+capture_logs	0	0	0	
+get_destinations	0.010	0.008	7.736	
+ping_capture	0.015	0.010	6.857	
+shuffle	0.002	0.000	0.002	
