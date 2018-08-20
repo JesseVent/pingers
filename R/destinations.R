@@ -15,10 +15,13 @@
 #' @importFrom stringr str_extract_all
 #' @export
 #'
-#' @examples {
+#' @examples
+#' \dontrun{
 #' dest <- get_destinations(top_n = 1)
 #' }
 get_destinations <- function(keyword = NULL, top_n = NULL) {
+  sys_os <- .Platform$OS.type
+  if (sys_os == "unix") {
   if (is.null(top_n)) {
     trace <- system("traceroute google.com", intern = TRUE) %>%
       tidyselect::vars_select(tidyselect::contains(keyword)) %>%
@@ -39,4 +42,7 @@ get_destinations <- function(keyword = NULL, top_n = NULL) {
     call. = FALSE
   ),
   return(trace))
+} else {
+  stop("Sorry, version 0.1.0 of pinger only runs on unix systems.")
+}
 }

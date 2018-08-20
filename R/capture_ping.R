@@ -13,12 +13,14 @@
 #' @importFrom stringr str_replace_all
 #' @importFrom tibble tibble
 #'
-#' @examples {
+#' @examples
+#' \dontrun{
 #' dest     <- get_destinations(top_n = 1)
 #' ping_res <- ping_capture(dest$ip[1], 1)
 #' }
-#'
 ping_capture <- function(server, count) {
+  sys_os <- .Platform$OS.type
+  if (sys_os == "unix") {
   ping_query    <- paste("ping", server, "-c", count)
   d             <- system(ping_query, intern = TRUE)
   n             <- length(d) %>% as.numeric()
@@ -55,5 +57,8 @@ ping_capture <- function(server, count) {
       ping_stddev,
       ping_list
     )
+  } else {
+    stop("Sorry, version 0.1.0 of pinger only runs on unix systems.")
+  }
   return(ping_results)
 }

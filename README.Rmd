@@ -30,8 +30,8 @@ These functions will:
 
 ```{r example, eval=F, echo=T}
 # Install pingers from GitHub
-devtools::install_github("jessevent/pinger")
-library(pinger)
+# devtools::install_github("jessevent/pinger")
+library(pingers)
 
 # Retrieve top n traceroute results in your call stack
 destinations <- get_destinations(top_n = 9)
