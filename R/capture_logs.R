@@ -28,13 +28,8 @@
 #' }
 capture_logs <- function(destinations = 9, pings = 50, log_path = NULL, sleep = NULL) {
   sys_os <- .Platform$OS.type
-<<<<<<< HEAD
   if (sys_os == "unix") {
   if (is.null(log_path)) {
-=======
-  if(sys_os == "unix") {
-  if(is.null(log_path)) {
->>>>>>> 91614a8d37c8be49b1f607617e35e53857d2a358
     log_path <- paste0(format(Sys.time(), "%Y%m%d%H%M%S"), "_network_logs.csv")
   }
   message("Recursively pinging different servers in your destination list.", appendLF = TRUE)

@@ -20,11 +20,7 @@
 #' }
 ping_capture <- function(server, count) {
   sys_os <- .Platform$OS.type
-<<<<<<< HEAD
   if (sys_os == "unix") {
-=======
-  if(sys_os == "unix") {
->>>>>>> 91614a8d37c8be49b1f607617e35e53857d2a358
   ping_query    <- paste("ping", server, "-c", count)
   d             <- system(ping_query, intern = TRUE)
   n             <- length(d) %>% as.numeric()
