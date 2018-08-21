@@ -11,3 +11,5 @@ ISSUE_TEMPLATE.md
 cran-comments.md
 /inst/
 ^cran-comments\.md$
+pingers.Rcheck/
+/pingers.Rcheck/

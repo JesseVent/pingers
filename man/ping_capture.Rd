@@ -18,8 +18,9 @@ dataframe with ping results
 Ping a server to capture response details
 }
 \examples{
-\dontrun{
+{
 dest     <- get_destinations(top_n = 1)
-ping_res <- ping_capture(dest$ip[1], 1)
+ping_res <- ping_capture(dest$ip[1], 10)
+print(ping_res)
 }
 }

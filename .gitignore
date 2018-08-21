@@ -2,4 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
-pingers.Rcheck*
+pingers.Rcheck/
+pingers.Rcheck/*
+/pingers.Rcheck/

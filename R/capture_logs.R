@@ -27,8 +27,6 @@
 #' capture_logs(destinations = 3, pings = 10, log_path = log, sleep = 20)
 #' }
 capture_logs <- function(destinations = 9, pings = 50, log_path = NULL, sleep = NULL) {
-  sys_os <- .Platform$OS.type
-  if (sys_os == "unix") {
   if (is.null(log_path)) {
     log_path <- paste0(format(Sys.time(), "%Y%m%d%H%M%S"), "_network_logs.csv")
   }
@@ -52,8 +50,5 @@ capture_logs <- function(destinations = 9, pings = 50, log_path = NULL, sleep = 
     }
     tictoc::toc()
     if (!is.null(sleep)) Sys.sleep(sleep)
-  }
-  } else {
-    stop("Sorry, version 0.1.0 of pinger only runs on unix systems.")
   }
 }

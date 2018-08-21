@@ -16,12 +16,16 @@
 #' @examples
 #' \dontrun{
 #' dest     <- get_destinations(top_n = 1)
-#' ping_res <- ping_capture(dest$ip[1], 1)
+#' ping_res <- ping_capture(dest$ip[1], 10)
+#' print(ping_res)
 #' }
 ping_capture <- function(server, count) {
-  sys_os <- .Platform$OS.type
+  sys_os        <- .Platform$OS.type
   if (sys_os == "unix") {
-  ping_query    <- paste("ping", server, "-c", count)
+    ping_query  <- paste("ping", server, "-c", count)
+  } else {
+    ping_query  <- paste("ping", server, "-n", count)
+  }
   d             <- system(ping_query, intern = TRUE)
   n             <- length(d) %>% as.numeric()
   ping_list     <- list(d[2:(n - 4)])
@@ -41,9 +45,11 @@ ping_capture <- function(server, count) {
   packets_sent  <- pkt[[1]][1] %>% as.numeric()
   packets_back  <- pkt[[1]][2] %>% as.numeric()
   packet_loss   <- pkt[[1]][3] %>% as.numeric()
-  packets_lost  <- (packets_sent / packets_back) * 100 - 100
+  packets_lost  <- packets_sent - packets_back
+  loss_rate     <- ((packets_sent - packets_back) / packets_sent) * 100
 
-  ping_results <-
+
+  pres <-
     tibble::tibble(
       timestamp,
       server,
@@ -51,14 +57,23 @@ ping_capture <- function(server, count) {
       packets_back,
       packet_loss,
       packets_lost,
+      loss_rate,
       ping_min,
       ping_avg,
       ping_max,
       ping_stddev,
       ping_list
     )
-  } else {
-    stop("Sorry, version 0.1.0 of pinger only runs on unix systems.")
-  }
-  return(ping_results)
+  pres$packets_sent[is.na(pres$packets_sent)] <- 100
+  pres$packets_back[is.na(pres$packets_back)] <- 0
+  pres$loss_rate[is.na(pres$loss_rate)]       <- 100
+  pres$packets_lost[is.na(pres$packets_lost)] <- 100
+  pres$ping_stddev[is.na(pres$ping_stddev)]   <- 0
+  pres$ping_min[is.na(pres$ping_min)]         <- 0
+  pres$ping_max[is.na(pres$ping_max)]         <- 0
+  pres$ping_avg[is.na(pres$ping_avg)]         <- 0
+  pres$loss_rate <- ((pres$packets_sent - pres$packets_back) / pres$packets_sent * 100)
+  pres$packet_loss[is.na(pres$packet_loss)]   <- pres$loss_rate
+  pres$packets_lost <- pres$packets_sent - pres$packets_back
+  return(pres)
 }

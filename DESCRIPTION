@@ -8,7 +8,7 @@ Description: To assist you with troubleshooting internet connection issues and
     ping each server in series while capturing the results and writing them to a log file. 
     Each iteration it queries the destinations again, before shuffling the sequence of 
     destinations to ensure the analysis is unbiased and consistent across each trace route.
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(person("Jesse", "Vent",
                     role = c("aut", "cre"), 
                     email = "cryptopackage@icloud.com"))
@@ -24,5 +24,8 @@ Imports: dplyr,
   tibble,
   tictoc,
   tidyselect,
-  data.table
+  data.table,
+  lubridate,
+  plotly,
+  reshape2
 RoxygenNote: 6.1.0
