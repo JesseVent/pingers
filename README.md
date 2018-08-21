@@ -1,29 +1,53 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-pingers
-=======
+pingers <img src="man/figures/logo.png" align="right" />
+========================================================
+
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/pingers)](https://cran.r-project.org/package=pingers)
+![Cran](http://cranlogs.r-pkg.org/badges/grand-total/pingers)
+[![Rdoc](http://www.rdocumentation.org/badges/version/pingers)](http://www.rdocumentation.org/packages/pingers)
+
+Overview
+--------
 
 The goal of pingers is to assist you with troubleshooting ISP connection
-issues and assist isolating packet loss. It does this by allowing you to
-retrieve the top traceroute destinations your ISP uses, and recursively
-ping each server a seres of time capturing the results. Each iteration
-it then re-retrieves the destinations and shuffles the sequence to
-ensure the analysis is unbiased and consistent across each trace route.
+issues and assist isolating packet loss.
+
+It does this by allowing you to retrieve the top traceroute destinations
+your ISP uses, and recursively ping each server a seres of time
+capturing the results. Each iteration it then re-retrieves the
+destinations and shuffles the sequence to ensure the analysis is
+unbiased and consistent across each trace route.
+
+Installation
+------------
+
+``` r
+# Install through CRAN
+install.packages("pingers")
+
+# Or the development version from GitHub
+# install.packages("devtools")
+devtools::install_github("jessevent/pingers")
+```
 
 Usage
 -----
 
 The below showcases the main functions of the `pingers` package.
 
-These functions will: - Retrieve hops between ISP destinations on your
-network - Ping a destination repeatedly and calculate packet loss -
-Repeat pinging the destinations to isolate and locate troublesome
-destinations - Shuffle the destinations in each iteration as to not be
-only testing for one path
+These functions will:
+
+-   Retrieve hops between ISP destinations on your network
+-   Ping a destination repeatedly and calculate packet loss
+-   Repeat pinging the destinations to isolate and locate troublesome
+    destinations
+-   Shuffle the destinations in each iteration as to not be only testing
+    for one path
 
 ``` r
 # Install pingers from GitHub
-devtools::install_github("jessevent/pinger")
-library(pinger)
+# devtools::install_github("jessevent/pinger")
+library(pingers)
 
 # Retrieve top n traceroute results in your call stack
 destinations <- get_destinations(top_n = 9)
@@ -130,3 +154,12 @@ The **network\_log.csv** file will contain the following:
 </tr>
 </tbody>
 </table>
+
+### Author/License
+
+-   **Jesse Vent** - Package Author -
+    [jessevent](https://github.com/jessevent)
+
+This project is licensed under the MIT License - see the
+[LICENSE](https://github.com/JesseVent/pingers/blob/master/LICENSE) file
+for details.

@@ -10,19 +10,38 @@ output:
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "man/figures/README-"
 )
 ```
 
-# pingers
+# pingers <img src="man/figures/logo.png" align="right" />
 
-The goal of pingers is to assist you with troubleshooting ISP connection issues and assist isolating packet loss. It does this by allowing you to retrieve the top traceroute destinations your ISP uses, and recursively ping each server a seres of time capturing the results. Each iteration it then re-retrieves the destinations and shuffles the sequence to ensure the analysis is unbiased and consistent across each trace route.
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/pingers)](https://cran.r-project.org/package=pingers)
+![Cran](http://cranlogs.r-pkg.org/badges/grand-total/pingers)  [![Rdoc](http://www.rdocumentation.org/badges/version/pingers)](http://www.rdocumentation.org/packages/pingers)
 
+## Overview
+
+The goal of pingers is to assist you with troubleshooting ISP connection issues and assist isolating packet loss.
+
+It does this by allowing you to retrieve the top traceroute destinations your ISP uses, and recursively ping each server a seres of time capturing the results. Each iteration it then re-retrieves the destinations and shuffles the sequence to ensure the analysis is unbiased and consistent across each trace route.
+
+## Installation
+
+```{r, eval = FALSE}
+# Install through CRAN
+install.packages("pingers")
+
+# Or the development version from GitHub
+# install.packages("devtools")
+devtools::install_github("jessevent/pingers")
+
+```
 ## Usage
 
 The below showcases the main functions of the `pingers` package. 
 
 These functions will:
+
 - Retrieve hops between ISP destinations on your network
 - Ping a destination repeatedly and calculate packet loss
 - Repeat pinging the destinations to isolate and locate troublesome destinations 
@@ -59,3 +78,9 @@ timestamp               | server     | packets_sent | packets_back | packet_loss
 2018-07-22T15:29:40.48Z | 10.0.0.001 | 10           | 10           | 0           | 0            | 2.697    | 3.948    | 8.649    | 1.667       | 2
 2018-07-22T15:29:49.50Z | 10.0.0.002 | 10           | 9            | 10          | 11.1         | 3.366    | 5.083    | 8.163    | 1.381       | 3
 2018-07-22T15:29:58.53Z | 10.0.0.003 |              |              |             |              |          |          |          |             | 7
+
+### Author/License
+
+- **Jesse Vent** - Package Author - [jessevent](https://github.com/jessevent)
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/JesseVent/pingers/blob/master/LICENSE) file for details.
