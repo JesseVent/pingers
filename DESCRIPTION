@@ -1,7 +1,6 @@
 Package: pingers
 Type: Package
 Title: Identify, Ping, and Log Internet Provider Connection Data
-Note: Currently only unix based systems are supported.
 Description: To assist you with troubleshooting internet connection issues and
     assist in isolating packet loss on your network. It does this by allowing you to 
     retrieve the top trace route destinations your internet provider uses, and recursively 
@@ -9,6 +8,7 @@ Description: To assist you with troubleshooting internet connection issues and
     Each iteration it queries the destinations again, before shuffling the sequence of 
     destinations to ensure the analysis is unbiased and consistent across each trace route.
 Version: 0.1.1
+Date: 2018-10-17
 Authors@R: c(person("Jesse", "Vent",
                     role = c("aut", "cre"), 
                     email = "cryptopackage@icloud.com"))

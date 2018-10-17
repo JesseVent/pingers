@@ -10,6 +10,7 @@
 #' @importFrom tibble tibble
 #' @importFrom reshape2 dcast
 #' @importFrom plotly plot_ly
+#' @importFrom dplyr "%>%"
 #' @importFrom dplyr group_by summarise
 #' @examples
 #' \dontrun{
@@ -49,5 +50,5 @@ pingers_heatmap <- function(logs=NULL) {
     z      = hm,
     type   = "heatmap",
     colors = "Blues"
-  )
+  ) %>% plotly::layout(title = "Packet Loss Heatmap")
 }

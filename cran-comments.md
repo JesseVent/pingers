@@ -1,5 +1,12 @@
 ## Latest CRAN submission comments
 
+### pingers 0.1.1 - Updated functionality
+- Took onboard feedback from Uwe in original commit and made package cross-platform supporting both Windows and Unix systems.
+- Added additional sanity checks to handle different results being returned by trace route
+- Created heatmap visualisation function to visualise hotspots of network issues
+
+** @Uwe - Sanity checks and code changes can be found at below commit  https://github.com/JesseVent/pingers/commit/711395bcf184dd02f3e5b88fd529c25506c728fc **
+
 ### pingers 0.1.0 - New Submission
 
 #### Test environments

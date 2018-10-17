@@ -23,7 +23,7 @@ to assist isolating issues with individual
 nodes for your ISP.
 }
 \examples{
-{
+\dontrun{
 dest <- get_destinations(top_n = 3)
 print(dest)
 }
