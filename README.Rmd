@@ -1,7 +1,7 @@
 ---
 output:
   md_document:
-    variant: markdown_github
+    variant: gfm
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -46,6 +46,8 @@ These functions will:
 - Ping a destination repeatedly and calculate packet loss
 - Repeat pinging the destinations to isolate and locate troublesome destinations 
 - Shuffle the destinations in each iteration as to not be only testing for one path
+- Save all the captured results into a historical network log file
+- Visualise packet loss hotspots through plotly's interactive heatmap
 
 ```{r example, eval=F, echo=T}
 # Install pingers from GitHub
@@ -59,11 +61,13 @@ destinations <- get_destinations(top_n = 9)
 ping_results <- ping_capture(destinations$ip[1], 50)
 
 # File and path of where to save the network log
-log_path     <- "~/Desktop/netlogs/network_logs.csv"
+log_path     <- "network_logs.csv"
 
 # Start recursively capturing network logs until cancelled or interupted.
-# capture_logs(destinations = 3, pings = 10, log_path = log, sleep = 20) 
+capture_logs(destinations = 7, pings = 10, log_path, sleep = 20) 
 
+# Visualise network logs data as a packet loss heatmap.
+rio::import(log_path) %>% pingers_heatmap()
 ```
 
 > Use `Ctrl + C` to stop capturing logs, or the **Stop** button in RStudio.
@@ -78,6 +82,16 @@ timestamp               | server     | packets_sent | packets_back | packet_loss
 2018-07-22T15:29:40.48Z | 10.0.0.001 | 10           | 10           | 0           | 0            | 2.697    | 3.948    | 8.649    | 1.667       | 2
 2018-07-22T15:29:49.50Z | 10.0.0.002 | 10           | 9            | 10          | 11.1         | 3.366    | 5.083    | 8.163    | 1.381       | 3
 2018-07-22T15:29:58.53Z | 10.0.0.003 |              |              |             |              |          |          |          |             | 7
+
+
+## Packet Loss Heatmap
+```{r heatmap, eval=F, echo=T}
+network_logs <- rio::import("network_logs.csv")
+
+pingers::pingers_heatmap(network_logs)
+```
+
+<img src="man/figures/heatmap.png" align="centre" />
 
 ### Author/License
 
